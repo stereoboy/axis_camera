@@ -59,6 +59,8 @@ class StreamThread(threading.Thread):
 
             # ...and install it globally so it can be used with urlopen.
             urllib2.install_opener(opener)
+        else:
+            rospy.logerr('need to setup username and passwd!')
     
     def openURL(self):
         '''Open connection to Axis camera using http'''
@@ -175,8 +177,8 @@ def main():
 
     arg_defaults = {
         'hostname': '192.168.200.110',       # default IP address
-        'username': 'root',               # default login name
-        'password': '0522',
+        'username': '',               # default login name
+        'password': '',
         'width': 640,
         'height': 480,
         'frame_id': 'axis_camera',
